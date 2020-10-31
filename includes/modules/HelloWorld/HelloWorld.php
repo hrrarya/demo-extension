@@ -4,6 +4,7 @@ class DEEX_HelloWorld extends ET_Builder_Module {
 
 	public $slug       = 'deex_hello_world';
 	public $vb_support = 'on';
+	public $child_slug = 'deex_hello_world_child';
 
 	protected $module_credits = array(
 		'module_uri' => '',
@@ -17,13 +18,19 @@ class DEEX_HelloWorld extends ET_Builder_Module {
 
 	public function get_fields() {
 		return array(
-			'content' => array(
-				'label'           => esc_html__( 'Content', 'deex-demo-extension' ),
-				'type'            => 'tiny_mce',
-				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'deex-demo-extension' ),
-				'toggle_slug'     => 'main_content',
-			),
+			'select' => array(
+                'label' => esc_html__('Select One', 'dnext-divi-next'),
+                'type' => 'select',
+                'description' => esc_html__('Select the link target', 'dnext-divi-next'),
+                'option_category' => 'basic_option',
+                'toggle_slug' => 'main_content',
+                'options' => array(
+                    'image' => esc_html__('Image', 'dnext-divi-next'),
+                    'icon' => esc_html__('Icon', 'dnext-divi-next'),
+
+                ),
+                'default' => 'icon',
+            ),
 		);
 	}
 
